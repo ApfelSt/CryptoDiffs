@@ -1,43 +1,16 @@
 /*
- * This program follows the first algorithm in the paper
+ * hash_table.c
+ * Description: This file contains the implementation of a hash table data structure with thread-safe insert operations. It includes functions to insert key-value pairs into the hash table while ensuring that concurrent access is properly synchronized using mutex locks.
  */
 
 /* INCLUDES */
-#include "find_diffs.h"
+#include "hash_table.h"
 
 /* DEFINES */
 
 /* STRUCTS */
 
 /* FUNCTIONS */
-
-void f(bitstring *input, bitstring *output) {
-    //TODO: implement real f. For now, just copy input to output
-    for (size_t i = 0; i < n; i++) {
-        output[i] = input[i];
-    }
-}
-
-void g_gamma(bitstring *input, bitstring *gamma, bitstring *output) {
-    bitstring *f_input = malloc(n);
-    bitstring *input_xor_gamma = malloc(n);
-    bitstring *f_input_xor_gamma = malloc(n);
-    f(input, f_input);
-
-    for (size_t i = 0; i < n; i++) {
-        input_xor_gamma[i] = input[i] ^ gamma[i];
-    }
-
-    f(input_xor_gamma, f_input_xor_gamma);
-    
-    for (size_t i = 0; i < n; i++) {
-        output[i] = f_input[i] ^ f_input_xor_gamma[i];
-    }
-
-    free(f_input);
-    free(input_xor_gamma);
-    free(f_input_xor_gamma);
-}
 
 void insert(table_manager *manager, size_t index, hkey_t *key, bitstring *value) {
     // Get the hash table and lock for the given index
