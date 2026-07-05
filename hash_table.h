@@ -71,3 +71,41 @@ typedef struct table_manager {
  * Returns: void
  */
 void insert(table_manager *table, size_t index, hkey_t *key, bitstring *value);
+
+/*
+ * Function: search
+ * Description: Searches for a key in the table and returns the corresponding value.
+ * Parameters:
+ *  - table: pointer to the hash table manager
+ *  - index: index of the mini hash table to search in
+ *  - key: pointer to the key to be searched (n bits)
+ * Returns: pointer to the value corresponding to the key (n bits), or NULL if not found
+ */
+bitstring *search(table_manager *table, size_t index, hkey_t *key);
+
+/*
+ * Function: create_table_manager
+ * Description: Creates a new table manager with the specified number of mini hash tables.
+ * Parameters:
+ *  - size: the number of mini hash tables to create (NUM_THREADS)
+ * Returns: pointer to the newly created table manager
+ */
+table_manager *create_table_manager(size_t size);
+
+/*
+ * Function: free_table_manager
+ * Description: Frees the memory allocated for the table manager and its mini hash tables.
+ * Parameters:
+ *  - manager: pointer to the table manager to be freed
+ * Returns: void
+ */
+void free_table_manager(table_manager *manager);
+
+/*
+ * Function: hash_function
+ * Description: A simple hash function that hashes a key to an index in the hash table.
+ * Parameters:
+ *  - key: pointer to the key to be hashed (n bits)
+ * Returns: the index in the hash table corresponding to the key
+ */
+size_t hash_function(hkey_t *key);
