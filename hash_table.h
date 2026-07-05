@@ -108,4 +108,4 @@ void free_table_manager(table_manager *manager);
  *  - key: pointer to the key to be hashed (n bits)
  * Returns: the index in the hash table corresponding to the key
  */
-size_t hash_function(hkey_t *key);
+size_t default_hash(hkey_t *key);

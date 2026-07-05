@@ -105,3 +105,8 @@ void free_table_manager(table_manager *manager) {
     free(manager->locks);
     free(manager);
 }
+
+size_t default_hash(hkey_t *key) {
+    // Should NOT be used for hashing, but for now we will use the integer representation of the key to hash it.
+    return (size_t)(*key->int_rep) % MINI_HASH_TABLE_SIZE;
+}

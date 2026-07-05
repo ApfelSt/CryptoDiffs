@@ -32,6 +32,17 @@
  */
 typedef uint64_t bitstring;
 
+/* Struct: Tuple
+ * Description: A tuple containing two bitstrings.
+ * Members:
+ *  - first: the first bitstring
+ *  - second: the second bitstring
+ */
+typedef struct {
+    bitstring first;
+    bitstring second;
+} Tuple;
+
 /* Union: key
  * Description: A key for the hash table
  */
@@ -39,5 +50,6 @@ typedef union {
     bitstring *bits;
     uint64_t *int_rep;
     size_t *size_rep;
+    Tuple *tuple_rep;
 } hkey_t;
 
